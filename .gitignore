@@ -1,0 +1,12 @@
+# Ignorer les dossiers de tests personnels des développeurs
+# Cible tous les dossiers finissant par _tests dans le répertoire tests/
+tests/*_tests/
+
+# Optionnel : Ignorer les fichiers temporaires et objets de compilation C
+# (Utile pour un projet de Shell en C)
+*.o
+*.a
+*.out
+vgcore.*
+.vscode/
+.idea/
