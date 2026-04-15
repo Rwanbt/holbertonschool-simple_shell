@@ -12,27 +12,27 @@
 
 /* Prompt & Input */
 void display_prompt(void);
-int charread_input(void);
+char *read_input(void);
 
 /* Parser */
-char **parse_input(charinput);
-void free_argv(char argv);
+char **parse_input(char *input);
+void free_argv(char **argv);
 
 /* Path */
-int charfind_command(char *command);
-char get_path_dirs(void);
+char *find_command(char *command);
+char **get_path_dirs(void);
 
 /* Executor */
-int execute_command(char argv, char env);
+int execute_command(char **argv, char **env);
 
 /* Built-ins */
-int is_builtin(charcommand);
-int execute_builtin(char argv, char env);
-int builtin_exit(char argv);
-int builtin_env(char env);
+int is_builtin(char *command);
+int execute_builtin(char **argv, char **env);
+int builtin_exit(char **argv);
+int builtin_env(char **env);
 
 /* Utils */
-char *char_strdup(char *str);
+char *_strdup(char *str);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
