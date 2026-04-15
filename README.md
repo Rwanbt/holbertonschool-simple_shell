@@ -99,8 +99,9 @@ The shell follows a continuous **Read-Parse-Execute** loop:
 
 #### Process flow
 
-<img src="./flowchart_simple_shell.png" alt="_printf Flowchart" style="border-radius:12px; width:80%; max-width:800px; display:block; margin:0 auto;">
-
+<p align="center">
+	<img src="./flowchart_simple_shell.png" alt="simple shell Flowchart" style="border-radius:12px; width:80%; max-width:800px; display:block; margin:0 auto;">
+</p>
 
 ### File structure and Responsibilities
 | Filename | Role | Primary Contributor |
@@ -134,6 +135,7 @@ Expected clean output:
 ==XXXX== ERROR SUMMARY: 0 errors from 0 contexts
 ```
 #### Technologies
+
 <p align="center">
     <img src="https://img.shields.io/badge/C-a8b9cc?logo=&logoColor=black&style=for-the-badge" alt="C badge">
     <img src="https://img.shields.io/badge/GIT-f05032?logo=git&logoColor=white&style=for-the-badge" alt="Git badge">
