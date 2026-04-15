@@ -32,7 +32,7 @@ int builtin_exit(char argv);
 int builtin_env(char env);
 
 /* Utils */
-char *char_strdup(char *str);
+char *_strdup(char *str);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);

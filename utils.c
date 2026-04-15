@@ -10,6 +10,9 @@ int _strlen(char *s)
 {
 	int len = 0;
 
+	if (!s)
+		return (0);
+
 	while (s[len])
 		len++;
 	return (len);
@@ -69,12 +72,12 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * char_strdup - duplicates a string
+ * _strdup - duplicates a string
  * @str: the string to duplicate
  * Return: a pointer to the duplicated string,
  * or NULL if memory allocation fails
  */
-char *char_strdup(char *str)
+char *_strdup(char *str)
 {
 	char *dup;
 	int len = _strlen(str);
@@ -82,7 +85,7 @@ char *char_strdup(char *str)
 	dup = malloc(sizeof(char) * (len + 1));
 
 	if (!dup)
-	return (NULL);
+		return (NULL);
 	_strcpy(dup, str);
 	return (dup);
 }
