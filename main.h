@@ -12,7 +12,7 @@
 
 /* Prompt & Input */
 void display_prompt(void);
-charread_input(void);
+int charread_input(void);
 
 /* Parser */
 char **parse_input(charinput);
