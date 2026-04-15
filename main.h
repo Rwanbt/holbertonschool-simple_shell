@@ -19,7 +19,7 @@ char **parse_input(charinput);
 void free_argv(char argv);
 
 /* Path */
-charfind_command(char *command);
+int charfind_command(char *command);
 char get_path_dirs(void);
 
 /* Executor */
@@ -32,9 +32,10 @@ int builtin_exit(char argv);
 int builtin_env(char env);
 
 /* Utils */
-char_strdup(char str);
-int _strlen(charstr);
-char _strcat(chardest, char src);
-int _strcmp(chars1, char s2);
+char *char_strdup(char *str);
+int _strlen(char *s);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
 
 #endif /* SHELL_H */
