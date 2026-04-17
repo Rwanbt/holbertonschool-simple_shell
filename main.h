@@ -1,7 +1,6 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef MAIN_H
+#define MAIN_H
 
-/* Libraries */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,26 +9,28 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+extern char **environ;
+
 /* Prompt & Input */
 void display_prompt(void);
-int charread_input(void);
+char *read_input(void);
 
 /* Parser */
-char **parse_input(charinput);
-void free_argv(char argv);
+char **parse_input(char *input);
+void free_argv(char **argv);
 
 /* Path */
 char *_getenv(const char *name, char **env);
 char *find_command(char *command, char **env);
 
 /* Executor */
-int execute_command(char argv, char env);
+int execute_command(char **argv, char **env);
 
 /* Built-ins */
-int is_builtin(charcommand);
-int execute_builtin(char argv, char env);
-int builtin_exit(char argv);
-int builtin_env(char env);
+int is_builtin(char *command);
+int execute_builtin(char **argv, char **env);
+int builtin_exit(char **argv);
+int builtin_env(char **env);
 
 /* Utils */
 char *_strdup(char *str);
@@ -38,4 +39,4 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 
-#endif /* SHELL_H */
+#endif /* MAIN_H */
