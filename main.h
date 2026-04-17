@@ -19,8 +19,8 @@ char **parse_input(charinput);
 void free_argv(char argv);
 
 /* Path */
-int charfind_command(char *command);
-char get_path_dirs(void);
+char *_getenv(const char *name, char **env);
+char *find_command(char *command, char **env);
 
 /* Executor */
 int execute_command(char argv, char env);
