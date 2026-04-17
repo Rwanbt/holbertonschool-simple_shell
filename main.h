@@ -20,6 +20,7 @@ char **parse_input(char *input);
 void free_argv(char **argv);
 
 /* Path */
+char *_build_path(char *dir, char *command);
 char *_getenv(const char *name, char **env);
 char *find_command(char *command, char **env);
 
