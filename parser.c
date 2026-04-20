@@ -39,13 +39,11 @@ char **parse_input(char *input)
 	int n;
 	int i = 0;
 
-	/* +1 pour le NULL final */
 	n = count_words(input);
 	argv = malloc(sizeof(char *) * (n + 1));
 	if (argv == NULL)
 		return (NULL);
 
-	/* strtok decoupe, _strdup rend argv independant de input */
 	token = strtok(input, " \t\n");
 	while (token != NULL)
 	{
@@ -75,7 +73,6 @@ void free_argv(char **argv)
 
 	while (argv[i] != NULL)
 	{
-	/* D'abord chaque mot, puis le tableau */
 		free(argv[i]);
 		i++;
 	}
