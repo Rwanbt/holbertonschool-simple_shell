@@ -14,7 +14,7 @@ int execute_command(char **argv, char **env)
 	int status = 0;
 
 	/* Chemin complet (ex: "ls" -> "/bin/ls") */
-	full_path = find_command(argv[0]);
+	full_path = find_command(argv[0], env);
 	if (full_path == NULL)
 	{
 		fprintf(stderr, "%s: command not found\n", argv[0]);
