@@ -37,20 +37,13 @@ int main(void)
 			continue;
 		}
 
-		if (is_builtin(argv[0]))
-		{
-			if (_strcmp(argv[0], "exit") == 0)
-			{
-				free_argv(argv);
-				break;
-			}
-			status = execute_builtin(argv, environ);
-		}
-		else
-		{
-			status = execute_command(argv, environ);
-		}
+		status = dispatch_command(argv, environ);
 		free_argv(argv);
+		if (status == -1)
+		{
+			status = 0;
+			break;
+		}
 	}
 	return (status);
 }
