@@ -15,7 +15,6 @@ int main(void)
 	{
 		display_prompt();
 
-		/* Lit une ligne (NULL si Ctrl+D) */
 		line = read_input();
 		if (line == NULL)
 		{
@@ -24,14 +23,12 @@ int main(void)
 			break;
 		}
 
-		/* Ligne vide -> nouveau prompt */
 		if (*line == '\0')
 		{
 			free(line);
 			continue;
 		}
 
-		/* Decoupe en argv, puis free line */
 		argv = parse_input(line);
 		free(line);
 		if (argv == NULL || argv[0] == NULL)
@@ -40,7 +37,6 @@ int main(void)
 			continue;
 		}
 
-		/* Builtin : exit doit break, env et autres s'executent */
 		if (is_builtin(argv[0]))
 		{
 			if (_strcmp(argv[0], "exit") == 0)
@@ -52,7 +48,6 @@ int main(void)
 		}
 		else
 		{
-			/* Commande externe : fork + execve + wait */
 			status = execute_command(argv, environ);
 		}
 		free_argv(argv);
