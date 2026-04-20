@@ -20,8 +20,9 @@ char **parse_input(char *input);
 void free_argv(char **argv);
 
 /* Path */
-char *find_command(char *command);
-char **get_path_dirs(void);
+char *_build_path(char *dir, char *command);
+char *_getenv(const char *name, char **env);
+char *find_command(char *command, char **env);
 
 /* Executor */
 int execute_command(char **argv, char **env);
@@ -39,4 +40,4 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 
-#endif
+#endif /* MAIN_H */

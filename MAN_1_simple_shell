@@ -1,0 +1,66 @@
+.TH SIMPLE_SHELL 1 "April 2026" "version 1.0" "User Commands"
+.SH NAME
+simple_shell \- simple UNIX command interpreter
+.SH SYNOPSIS
+.B simple_shell
+.SH DESCRIPTION
+.B simple_shell
+is a minimal command language interpreter that executes commands read from
+the standard input. It is a simplified reimplementation of
+.BR sh (1)
+written as a school project at Holberton.
+.PP
+When invoked interactively,
+.B simple_shell
+displays a prompt
+.RB ( $ )
+and waits for the user to type a command. The line is split into words on
+whitespace, the first word is looked up in the directories listed in the
+.B PATH
+environment variable, and the resulting program is executed in a child
+process. The shell then waits for the child to terminate and prints a new
+prompt.
+.PP
+When the standard input is not a terminal, the prompt is suppressed and
+.B simple_shell
+reads and executes commands one per line until end of file.
+.SH BUILTINS
+The following commands are implemented internally:
+.TP
+.B exit
+Exit the shell.
+.TP
+.B env
+Print the current environment, one variable per line.
+.SH EXIT STATUS
+.B simple_shell
+returns the exit status of the last command executed.
+If the command cannot be found, the exit status is
+.BR 127 .
+.SH EXAMPLES
+.PP
+Run a command interactively:
+.nf
+.RS
+$ /bin/ls
+.RE
+.fi
+.PP
+Run a command from a pipe:
+.nf
+.RS
+echo "/bin/ls" | ./hsh
+.RE
+.fi
+.SH BUGS
+No known bugs.
+Report issues to the authors.
+.SH AUTHORS
+David LENGELLÉ, Erwan.
+.SH SEE ALSO
+.BR sh (1),
+.BR bash (1),
+.BR execve (2),
+.BR fork (2),
+.BR wait (2),
+.BR getline (3)
