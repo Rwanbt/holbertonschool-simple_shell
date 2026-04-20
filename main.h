@@ -1,5 +1,5 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,6 +8,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+
+extern char **environ;
 
 /* Prompt & Input */
 void display_prompt(void);
