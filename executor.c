@@ -4,10 +4,12 @@
  * execute_command - forks and executes a command
  * @argv: NULL-terminated argument vector (argv[0] is the command)
  * @env: environment to pass to the executed program
+ * @prog: program name (av[0] of main), used for error messages
+ * @line: current command number, used for error messages
  *
  * Return: exit status of the child, or 127 if command not found
  */
-int execute_command(char **argv, char **env)
+int execute_command(char **argv, char **env, char *prog, int line)
 {
 	char *full_path;
 	pid_t pid;
@@ -16,7 +18,7 @@ int execute_command(char **argv, char **env)
 	full_path = find_command(argv[0], env);
 	if (full_path == NULL)
 	{
-		fprintf(stderr, "%s: command not found\n", argv[0]);
+		fprintf(stderr, "%s: %d: %s: not found\n", prog, line, argv[0]);
 		return (127);
 	}
 
