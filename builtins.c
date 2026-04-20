@@ -62,3 +62,20 @@ int builtin_env(char **env)
 
 	return (0);
 }
+
+/**
+ * dispatch_command - decide quoi faire avec argv[0]
+ * @argv: arguments de la commande
+ * @env: environnement
+ *
+ * Return: status de la commande, ou -1 si c'etait "exit"
+ */
+int dispatch_command(char **argv, char **env)
+{
+	if (_strcmp(argv[0], "exit") == 0)
+		return (-1);
+
+	if (is_builtin(argv[0]))
+		return (execute_builtin(argv, env));
+	return (execute_command(argv, env));
+}
