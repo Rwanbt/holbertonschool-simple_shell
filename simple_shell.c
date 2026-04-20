@@ -40,8 +40,21 @@ int main(void)
 			continue;
 		}
 
-		/* fork + execve + wait */
-		status = execute_command(argv, environ);
+		/* Builtin : exit doit break, env et autres s'executent */
+		if (is_builtin(argv[0]))
+		{
+			if (_strcmp(argv[0], "exit") == 0)
+			{
+				free_argv(argv);
+				break;
+			}
+			status = execute_builtin(argv, environ);
+		}
+		else
+		{
+			/* Commande externe : fork + execve + wait */
+			status = execute_command(argv, environ);
+		}
 		free_argv(argv);
 	}
 	return (status);
