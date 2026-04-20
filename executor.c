@@ -13,7 +13,6 @@ int execute_command(char **argv, char **env)
 	pid_t pid;
 	int status = 0;
 
-	/* Chemin complet (ex: "ls" -> "/bin/ls") */
 	full_path = find_command(argv[0], env);
 	if (full_path == NULL)
 	{
@@ -29,7 +28,6 @@ int execute_command(char **argv, char **env)
 		return (1);
 	}
 
-	/* Fils : on remplace l'image par la commande */
 	if (pid == 0)
 	{
 		if (execve(full_path, argv, env) == -1)
@@ -39,7 +37,6 @@ int execute_command(char **argv, char **env)
 			exit(127);
 		}
 	}
-	/* Pere : on attend et on extrait le vrai code de retour */
 	else
 	{
 		wait(&status);
