@@ -32,6 +32,7 @@ int is_builtin(char *command);
 int execute_builtin(char **argv, char **env);
 int builtin_exit(char **argv);
 int builtin_env(char **env);
+int dispatch_command(char **argv, char **env);
 
 /* Utils */
 char *_strdup(char *str);
