@@ -64,18 +64,20 @@ int builtin_env(char **env)
 }
 
 /**
- * dispatch_command - decide quoi faire avec argv[0]
- * @argv: arguments de la commande
- * @env: environnement
+ * dispatch_command - routes a command to the right handler
+ * @argv: NULL-terminated argument vector (argv[0] is the command)
+ * @env: environment variables array
+ * @prog: program name (av[0] of main), forwarded to execute_command
+ * @line: current command number, forwarded to execute_command
  *
- * Return: status de la commande, ou -1 si c'etait "exit"
+ * Return: status of the command, or -1 if the command was "exit"
  */
-int dispatch_command(char **argv, char **env)
+int dispatch_command(char **argv, char **env, char *prog, int line)
 {
 	if (_strcmp(argv[0], "exit") == 0)
 		return (-1);
 
 	if (is_builtin(argv[0]))
 		return (execute_builtin(argv, env));
-	return (execute_command(argv, env));
+	return (execute_command(argv, env, prog, line));
 }
