@@ -28,7 +28,6 @@ char *read_input(void)
 		return (NULL);
 	}
 
-	/* Enleve le \n final pour ne pas polluer execve */
 	if (line[nread - 1] == '\n')
 		line[nread - 1] = '\0';
 	return (line);
