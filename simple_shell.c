@@ -4,10 +4,11 @@
  * main - entry point of the simple shell
  * @ac: argument count (unused)
  * @av: argument vector; av[0] is used in error messages
+ * @envp: environment variables array passed to commands
  *
  * Return: 0 on success, the status of the last command otherwise
  */
-int main(int ac, char **av)
+int main(int ac, char **av, char **envp)
 {
 	char *line;
 	char **argv;
@@ -41,7 +42,7 @@ int main(int ac, char **av)
 			continue;
 		}
 
-		status = dispatch_command(argv, environ, av[0], ++line_num);
+		status = dispatch_command(argv, envp, av[0], ++line_num);
 		free_argv(argv);
 		if (status == -1)
 			return (0);
