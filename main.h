@@ -9,8 +9,6 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-extern char **environ;
-
 /* Prompt & Input */
 void display_prompt(void);
 char *read_input(void);
